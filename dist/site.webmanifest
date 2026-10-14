@@ -1,0 +1,14 @@
+{
+  "name": "SOBHADINATH ENTERPRISE",
+  "short_name": "Sobhadi­nath",
+  "description": "PET food packaging for bulk business enquiries.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1e7a52",
+  "background_color": "#f8faf7",
+  "icons": [{
+    "src": "/logo.svg",
+    "sizes": "64x64",
+    "type": "image/svg+xml"
+  }]
+}
