@@ -1,32 +1,23 @@
 {
   "id": "/",
-  "name": "SOBHADINATH ENTERPRISE",
+  "name": "Sobhadinath Enterprise",
   "short_name": "Sobhadinath",
-  "description": "Sobhadinath Enterprise - Business and packaging solutions",
+  "description": "Sobhadinath Enterprise business website",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#F8F5E9",
-  "theme_color": "#234B35",
-  "orientation": "portrait",
+  "background_color": "#F7F4E9",
+  "theme_color": "#245C3A",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     }
   ]
 }

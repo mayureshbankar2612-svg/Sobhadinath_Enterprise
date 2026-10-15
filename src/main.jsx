@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
+import './motion.css';
 import './legal.css';
 import './hero-capacities.css';
 import './product-specs.css';
@@ -11,7 +12,7 @@ import './whatsapp-icon.css';
 const asset = path => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
 
 const company = {
-  name: 'SOBHADINATH ENTERPRISE', phone: '+91 9284723868', alternatePhone: '+91 7410702876', whatsapp: '919284723868',
+  name: 'SOBHADINATH ENTERPRISE', phone: '+91 9284723868', alternatePhone: '+91 7410702876', whatsapp: '919284723868', alternateWhatsapp: '917410702876',
   email: 'sobhadinathenterprise@gmail.com', optionalEmail: 'mayureshbankar88@gmail.com', gstin: '27COIPB5531H1Z3', pan: 'COIPB5531H',
   address: 'House No. 360, Sakori T Belhe, Near Vidya Niketan School, Bankar Mala, Pune, Maharashtra – 412410, India'
 };
@@ -76,14 +77,14 @@ function App() {
   const go = (name) => { setSection(name); setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const addToCart = (product) => { setCart(items => items.some(i => i.id === product.id) ? items.map(i => i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i) : [...items, { ...product, quantity: 1 }]); setSection('enquiry'); setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const updateQty = (id, quantity) => setCart(items => quantity < 1 ? items.filter(i => i.id !== id) : items.map(i => i.id === id ? { ...i, quantity } : i));
-  const updateForm = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const updateForm = (e) => setForm({ ...form, [e.target.name]: e.target.name === 'phone' ? e.target.value.replace(/\D/g, '').slice(0, 15) : e.target.value });
   const sendWhatsApp = () => {
-    if (!form.name || !form.email || !form.phone || !form.delivery || cart.length === 0) return;
+    if (!form.name || !form.email || form.phone.length < 10 || !form.delivery || cart.length === 0) return;
     const lines = cart.map((p, i) => `${i + 1}. Product: ${p.name}\n   Quantity: ${p.quantity} piece${p.quantity > 1 ? 's' : ''}`).join('\n\n');
     const message = `Hello ${company.name},\n\nI would like to enquire about bulk PET food packaging.\n\nCUSTOMER DETAILS\nName: ${form.name}\nCompany: ${form.company || 'Not provided'}\nPhone: ${form.phone}\nEmail: ${form.email}\nLocation: ${form.city || 'Not provided'}, ${form.state || 'Not provided'}, ${form.country}\n\nPRODUCT REQUIREMENTS\n${lines}\n\nDelivery Location: ${form.delivery}\nPurchase Frequency: ${form.frequency}\nAdditional Requirements: ${form.message || 'None'}\n\nPlease share your quotation, minimum order quantity, product specifications, delivery timeline, and payment terms.\n\nThank you.`;
     const url = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(message)}`;
     const opened = window.open(url, '_blank', 'noopener,noreferrer');
-    if (!opened) { setSubmitted(url); } else { setSubmitted('sent'); }
+    if (!opened) { window.location.assign(url); } else { setSubmitted('sent'); }
   };
 
   return <>
@@ -93,6 +94,7 @@ function App() {
     {section === 'industries' && <Industries />}
     {section === 'about' && <About go={go} />}
     {section === 'contact' && <Contact go={go} />}
+    {section === 'contact' && <WhatsAppGroupCard />}
     {section === 'terms' && <Terms />}
     {section === 'privacy' && <Privacy />}
     {section === 'enquiry' && <Enquiry cart={cart} updateQty={updateQty} form={form} updateForm={updateForm} sendWhatsApp={sendWhatsApp} submitted={submitted} go={go} />}
@@ -100,6 +102,11 @@ function App() {
     <a className="whatsapp-float" href={quickWhatsAppLink} target="_blank" rel="noreferrer" aria-label="Start a WhatsApp enquiry"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M8.8 7.9c.25-.25.62-.28.9-.08l1.05.76c.28.2.38.58.23.9l-.45.96c.54 1.1 1.42 1.98 2.52 2.52l.96-.45c.32-.15.7-.05.9.23l.76 1.05c.2.28.17.65-.08.9l-.55.55c-.4.4-.98.57-1.53.43a8.63 8.63 0 0 1-5.82-5.82c-.14-.55.03-1.13.43-1.53l.55-.42Z" fill="currentColor"/></svg></a>
     <Footer go={go} />
   </>;
+}
+
+function WhatsAppGroupCard() {
+  const groupLink = 'https://chat.whatsapp.com/B7AYr9xt6pnH9DhFoajIHa?s=qt&p=a&mlu=4&ilr=4';
+  return <section className="whatsapp-group-section"><div className="container whatsapp-group-card"><div className="whatsapp-group-copy"><p className="eyebrow">JOIN OUR COMMUNITY</p><h2>Stay connected with <em>Sobhadinath Enterprise.</em></h2><p>Join our WhatsApp group for packaging updates, product conversations and direct business communication.</p><a className="button primary" href={groupLink} target="_blank" rel="noreferrer">Join WhatsApp Group ↗</a></div><a className="whatsapp-qr" href={groupLink} target="_blank" rel="noreferrer" aria-label="Scan or click to join the Sobhadinath Enterprise WhatsApp group"><img src={asset('/images/whatsapp-group-qr.jpeg')} alt="WhatsApp group QR code for Sobhadinath Enterprise" /><span>Scan to join the group</span></a></div></section>;
 }
 
 function Home({ go, addToCart, setSelected }) {
