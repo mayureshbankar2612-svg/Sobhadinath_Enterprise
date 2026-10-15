@@ -246,6 +246,78 @@
   50% { box-shadow: 0 14px 30px rgba(30, 122, 82, .34); }
 }
 
+/* Responsive refinements for tablets, laptops and small phones. */
+html, body, #root { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; }
+
+@media (min-width: 801px) and (max-width: 1080px) {
+  .container { width: min(100% - 40px, 960px); }
+  .hero-grid, .split { gap: 36px; }
+  nav { gap: 16px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .contact-grid { gap: 45px; }
+  .enquiry-grid { gap: 30px; }
+}
+
+@media (max-width: 800px) {
+  .container { width: min(calc(100% - 32px), 640px); }
+  .header { z-index: 30; }
+  .brand strong { font-size: 13px; }
+  .hero-grid { gap: 34px; }
+  .hero-copy { text-align: left; }
+  .hero-text { font-size: 16px; }
+  .hero-image img { width: 100%; border-radius: 20px; }
+  .section-heading { margin-bottom: 28px; }
+  .section-heading h2 br, .page-intro h1 br { display: none; }
+  .catalog-tools { width: min(calc(100% - 32px), 640px); }
+  .search { min-height: 48px; }
+  .enquiry-form { padding: 24px 20px; }
+  .enquiry-item { align-items: flex-start; }
+  .card-actions { flex-wrap: wrap; }
+  .whatsapp-group-section { padding-bottom: 70px; }
+}
+
+@media (max-width: 520px) {
+  .container { width: calc(100% - 28px); }
+  .nav { height: 64px; }
+  nav { top: 64px; }
+  .brand { gap: 7px; }
+  .brand-logo { width: 34px; height: 34px; }
+  .brand small { font-size: 8px; }
+  .hero { padding: 42px 0 58px; }
+  h1 { font-size: clamp(36px, 11vw, 48px); }
+  h2 { font-size: clamp(29px, 9vw, 40px); }
+  .eyebrow { font-size: 10px; letter-spacing: .12em; }
+  .hero-actions, .contact-actions { display: grid; gap: 10px; }
+  .hero-actions .button, .contact-actions .button { width: 100%; }
+  .hero-image img { height: 260px; }
+  .image-card { left: 10px; right: 10px; bottom: 10px; padding: 12px 14px; }
+  .image-card b { font-size: 20px; }
+  .capacity-options { display: flex; flex-wrap: wrap; gap: 5px; }
+  .capacity-options button { padding: 5px 8px; }
+  .trust-items { padding: 20px 0; }
+  .section, .dark-section { padding-top: 58px; padding-bottom: 58px; }
+  .product-grid, .industry-grid { grid-template-columns: 1fr; gap: 14px; }
+  .product-image { height: 205px; }
+  .modal-backdrop { padding: 10px; }
+  .modal > div { padding: 24px 20px; }
+  .detail-list span { gap: 12px; }
+  .detail-list span b { flex: 1; }
+  .detail-list span { align-items: flex-start; }
+  .page { padding: 42px 0 64px; }
+  .page:has(.enquiry-head) .enquiry-head { padding: 25px 20px; border-radius: 21px; }
+  .page:has(.enquiry-head) .enquiry-products { padding: 18px; border-radius: 18px; }
+  .enquiry-grid { gap: 24px; }
+  .enquiry-item img { width: 62px; height: 62px; }
+  .enquiry-item b { font-size: 13px; }
+  .enquiry-item .remove { margin-left: 2px; }
+  .enquiry-form input, .enquiry-form select, .enquiry-form textarea { font-size: 16px; }
+  .whatsapp-group-card { padding: 24px 20px; border-radius: 21px; }
+  .whatsapp-qr { width: min(100%, 245px); }
+  .whatsapp-float { right: 16px; bottom: 16px; width: 48px; height: 48px; }
+  footer { padding-top: 45px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 1ms !important;
