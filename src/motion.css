@@ -169,11 +169,40 @@
 .whatsapp-qr:hover { transform: translateY(-6px) rotate(1deg); box-shadow: 0 22px 42px rgba(18, 71, 52, .18); }
 .whatsapp-qr img { display: block; width: 100%; max-width: 230px; border-radius: 12px; }
 .whatsapp-qr span { color: var(--green-dark); font-size: 12px; font-weight: 700; }
+.instagram-section { padding: 0 0 100px; background: #e6f4eb; }
+.instagram-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 25px 30px;
+  border: 1px solid rgba(30, 122, 82, .14);
+  border-radius: 22px;
+  background: linear-gradient(115deg, #fff, #f7f2fb);
+  box-shadow: 0 16px 38px rgba(18, 71, 52, .08);
+  animation: rise-in 700ms var(--motion-smooth) 100ms both;
+}
+.instagram-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #f9ce34, #ee2a7b 52%, #6228d7);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(98, 40, 215, .2);
+}
+.instagram-icon svg { width: 32px; height: 32px; }
+.instagram-card h2 { margin-bottom: 8px; font-size: clamp(26px, 3vw, 38px); }
+.instagram-card p:not(.eyebrow) { margin: 0; font-size: 14px; }
+.instagram-card .button { white-space: nowrap; }
 
 @media (max-width: 800px) {
   .page:has(.enquiry-head) .enquiry-products { position: static; }
   .whatsapp-group-card { grid-template-columns: 1fr; gap: 28px; }
   .whatsapp-qr { max-width: 260px; margin: auto; }
+  .instagram-card { grid-template-columns: auto 1fr; gap: 16px; }
+  .instagram-card .button { grid-column: 1 / -1; justify-self: start; }
 }
 
 /* High-visibility hero motion that makes the first screen feel alive. */
@@ -314,6 +343,10 @@ img { max-width: 100%; }
   .enquiry-form input, .enquiry-form select, .enquiry-form textarea { font-size: 16px; }
   .whatsapp-group-card { padding: 24px 20px; border-radius: 21px; }
   .whatsapp-qr { width: min(100%, 245px); }
+  .instagram-section { padding-bottom: 64px; }
+  .instagram-card { padding: 22px 18px; grid-template-columns: auto 1fr; }
+  .instagram-icon { width: 48px; height: 48px; border-radius: 14px; }
+  .instagram-icon svg { width: 27px; height: 27px; }
   .whatsapp-float { right: 16px; bottom: 16px; width: 48px; height: 48px; }
   footer { padding-top: 45px; }
 }

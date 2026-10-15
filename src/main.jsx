@@ -95,6 +95,7 @@ function App() {
     {section === 'about' && <About go={go} />}
     {section === 'contact' && <Contact go={go} />}
     {section === 'contact' && <WhatsAppGroupCard />}
+    {section === 'contact' && <InstagramCard />}
     {section === 'terms' && <Terms />}
     {section === 'privacy' && <Privacy />}
     {section === 'enquiry' && <Enquiry cart={cart} updateQty={updateQty} form={form} updateForm={updateForm} sendWhatsApp={sendWhatsApp} submitted={submitted} go={go} />}
@@ -107,6 +108,11 @@ function App() {
 function WhatsAppGroupCard() {
   const groupLink = 'https://chat.whatsapp.com/B7AYr9xt6pnH9DhFoajIHa?s=qt&p=a&mlu=4&ilr=4';
   return <section className="whatsapp-group-section"><div className="container whatsapp-group-card"><div className="whatsapp-group-copy"><p className="eyebrow">JOIN OUR COMMUNITY</p><h2>Stay connected with <em>Sobhadinath Enterprise.</em></h2><p>Join our WhatsApp group for packaging updates, product conversations and direct business communication.</p><a className="button primary" href={groupLink} target="_blank" rel="noreferrer">Join WhatsApp Group ↗</a></div><a className="whatsapp-qr" href={groupLink} target="_blank" rel="noreferrer" aria-label="Scan or click to join the Sobhadinath Enterprise WhatsApp group"><img src={asset('/images/whatsapp-group-qr.jpeg')} alt="WhatsApp group QR code for Sobhadinath Enterprise" /><span>Scan to join the group</span></a></div></section>;
+}
+
+function InstagramCard() {
+  const instagramLink = 'https://www.instagram.com/sobhadinathenterprise?psln=YWh1cWJycmJqc3Z2';
+  return <section className="instagram-section"><div className="container instagram-card"><div className="instagram-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8"/><circle cx="17.4" cy="6.7" r="1.1" fill="currentColor"/></svg></div><div><p className="eyebrow">FOLLOW ALONG</p><h2>See more from <em>Sobhadinath.</em></h2><p>Follow our Instagram page for product updates, packaging ideas and business news.</p></div><a className="button secondary" href={instagramLink} target="_blank" rel="noreferrer">Follow on Instagram ↗</a></div></section>;
 }
 
 function Home({ go, addToCart, setSelected }) {
