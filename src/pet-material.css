@@ -1,0 +1,27 @@
+.hero-copy .eyebrow::before {
+  content: 'PET means Polyethylene Terephthalate plastic';
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 14px;
+  padding: 8px 14px;
+  border: 1px solid #c9e2d1;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f0faf3, #e4f4e9);
+  color: #245c3a;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-transform: none;
+  box-shadow: 0 6px 18px rgba(18, 71, 52, .07);
+}
+
+@media (max-width: 480px) {
+  .hero-copy .eyebrow::before {
+    max-width: 100%;
+    padding: 7px 10px;
+    font-size: 11px;
+    white-space: normal;
+  }
+}
+
